@@ -40,7 +40,7 @@ class ItemComponent extends Component {
     }
     return (
       <Paper className={classes.root}>
-        <Table className={classes.table}>
+        <Table className={classes.table} size="small">
           <TableHead>
             <TableRow>
               <TableCell>Item</TableCell>
@@ -75,20 +75,30 @@ class ItemComponent extends Component {
         ts: Date.now(),
       }
     });
-    let keyItems = Object.values(resp.data).filter((i) => {
-      return i.buy_average > 100 && i.sell_average > 100 && i.members && i.buy_quantity > 3;
-    });
-
+    let keyItems = Object.values(resp.data);
     keyItems = keyItems.map(i => {
       return {
         ...i,
         margin: i.buy_average - i.sell_average,
-        roi: parseFloat(((i.buy_average - i.sell_average) / i.buy_average) * 100).toFixed(2),
+        roi: parseFloat((((i.buy_average - i.sell_average) / i.buy_average) * 100).toFixed(2)),
       };
     });
+
+    console.log(keyItems);
+
+    keyItems = keyItems.filter((i) => {
+      return (
+        i.buy_average > 100
+        && i.sell_average > 100
+        && i.members
+        && i.buy_quantity > 3
+        && i.roi > 0.5
+        && i.roi < 10
+      );
+    });
+
     // Sort by return on investment
     keyItems.sort(this.sortFunc);
-    console.log(keyItems);
 
     return this.setState({
       isLoaded: true,
