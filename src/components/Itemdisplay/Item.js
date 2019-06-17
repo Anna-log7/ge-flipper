@@ -13,12 +13,20 @@ import './Item.css';
 
 const styles = theme => ({
   root: {
-    width: '100%',
+    margin: 'auto',
+    height: '90vh',
+    width: '50%',
     marginTop: theme.spacing(3),
+    overflowY: 'auto',
     overflowX: 'auto',
   },
   table: {
     minWidth: 650,
+  },
+  head: {
+    backgroundColor: '#fff',
+    position: 'sticky',
+    top: 0
   },
 });
 
@@ -41,7 +49,7 @@ class ItemComponent extends Component {
     return (
       <Paper className={classes.root}>
         <Table className={classes.table} size="small">
-          <TableHead>
+          <TableHead className={classes.head}>
             <TableRow>
               <TableCell>Item</TableCell>
               <TableCell>Buy price</TableCell>
