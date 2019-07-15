@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import v from 'victory';
+// import v from 'victory';
 
 class Derivative extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class Derivative extends Component {
     };
   }
   render() {
-    const { options } = this.state;
+    // const { options } = this.state;
     return (
         <div>
         </div>

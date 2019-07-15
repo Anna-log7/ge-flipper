@@ -6,7 +6,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Link } from 'react-router-dom'
 import axios from 'axios';
 import './Item.css';
 
@@ -62,9 +61,7 @@ class ItemComponent extends Component {
           <TableBody>
             {items.map((item, index) => (
               <TableRow key={index}>
-                <TableCell>
-                  <Link to={`/derivative/${ item.id }`}>{item.name}</Link>
-                </TableCell>
+                <TableCell>{item.name}</TableCell>
                 <TableCell>{item.buy_average}</TableCell>
                 <TableCell>{item.sell_average}</TableCell>
                 <TableCell>{item.buy_quantity}</TableCell>
